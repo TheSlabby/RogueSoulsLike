@@ -20,12 +20,10 @@ public class Vector {
     }
 
     public double getNormalizedX() {
-        System.out.println(normalizedX);
         return normalizedX;
     }
 
     public double getNormalizedY() {
-        System.out.println(normalizedX);
         return normalizedY;
     }
 }

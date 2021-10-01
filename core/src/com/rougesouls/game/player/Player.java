@@ -1,6 +1,11 @@
 package com.rougesouls.game.player;
+
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.rougesouls.game.Game;
 import com.badlogic.gdx.graphics.Texture;
+import com.rougesouls.game.Wall;
+
 import java.util.ArrayDeque;
 
 public class Player {
@@ -11,8 +16,8 @@ public class Player {
 
     public Player(Game gameIn) {
         game = gameIn;
-        int x = 0;
-        int y = 0;
+        x = 0;
+        y = 0;
         currentAction = new Standing(this);
         movementSpeed = 12;
     }
@@ -32,11 +37,15 @@ public class Player {
     public void update() {
         currentAction.advanceState();
     }
-    public void move(double xIn, double yIn) {
-        x += xIn * movementSpeed;
-        y += yIn * movementSpeed;
-    }
 
+    public void move(double xIn, double yIn) {
+        //TODO make rectangle better
+        Rectangle playerRect = new Rectangle(x, y, 100, 100);
+        Vector2 velocity = new Vector2((float) xIn * movementSpeed, (float) yIn * movementSpeed);
+        velocity = Wall.move(playerRect, velocity);
+        x += velocity.x;
+        y += velocity.y;
+    }
 
 
 }

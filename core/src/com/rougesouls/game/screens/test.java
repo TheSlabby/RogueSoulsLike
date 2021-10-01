@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.rougesouls.game.Game;
 import com.rougesouls.game.Vector;
+import com.rougesouls.game.Wall;
 import com.rougesouls.game.screens.Screen;
 import sun.jvm.hotspot.debugger.Debugger;
 
@@ -22,6 +23,11 @@ public class test extends Screen {
         ScreenUtils.clear(1, 0, 0, 1);
         batch.begin();
         batch.draw(game.getPlayer().getTexture(), game.getPlayer().getX(), game.getPlayer().getY());
+
+        for (Wall wall : Wall.walls){
+            batch.draw(Wall.texture, wall.x, wall.y);
+        }
+
         batch.end();
     }
 

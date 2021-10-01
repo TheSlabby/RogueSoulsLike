@@ -6,6 +6,8 @@ import com.rougesouls.game.player.Player;
 import com.rougesouls.game.screens.Screen;
 import com.rougesouls.game.screens.test;
 
+import java.util.ArrayList;
+
 public class Game {
     SpriteBatch batch;
     private Screen currentScreen;
@@ -41,6 +43,7 @@ public class Game {
         currentScreen = new test(batch, this);
         player = new Player(this);
 
+        new Wall(200,200);
     }
     public void drawLoop() {
         currentScreen.draw();
